@@ -36,11 +36,18 @@ export default function ResultsPage({ params }: ResultsPageProps) {
           throw new Error("Failed to fetch results")
         }
         const data = await response.json()
-        if (!data.success) {
+        
+        // Add this console.log to debug the response
+        console.log('API Response:', data);
+        
+        // Check the exact structure of the response
+        if (!data || data.error) {
           throw new Error(data.error || "Failed to load results")
         }
+        
         setResults(data)
       } catch (err) {
+        console.error('Error details:', err);
         setError(err instanceof Error ? err.message : "Failed to load results")
       } finally {
         setLoading(false)

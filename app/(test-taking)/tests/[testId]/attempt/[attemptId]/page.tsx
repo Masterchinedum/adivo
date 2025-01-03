@@ -32,7 +32,7 @@ export default function TestAttemptPage({ params }: TestAttemptPageProps) {
   }, [params])
 
   useEffect(() => {
-    // Only fetch when attemptId is available
+
     if (!attemptId) return
 
     fetch(`/api/tests/attempt/${attemptId}/questions`)
